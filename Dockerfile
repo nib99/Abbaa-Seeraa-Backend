@@ -15,9 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
-# Expose a placeholder (Railway ignores this and uses $PORT)
+# Expose placeholder (Railway uses $PORT anyway)
 EXPOSE 8000
 
-# IMPORTANT: Use shell form so ${PORT} expands correctly
-# Railway injects the PORT variable dynamically
-uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
+# ✅ CORRECT: Use shell form CMD so ${PORT} works on Railway
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
