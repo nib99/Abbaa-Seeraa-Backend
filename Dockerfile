@@ -20,4 +20,4 @@ EXPOSE 8000
 
 # IMPORTANT: Use shell form so ${PORT} expands correctly
 # Railway injects the PORT variable dynamically
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
+uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
